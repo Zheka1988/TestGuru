@@ -7,21 +7,19 @@ require 'rails/all'
 Bundler.require(*Rails.groups)
 
 module TestGuru
+  VERSION = '1.0.0'
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
-    attr_reader :version
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
     config.time_zone = "Astana"
-    config.active_record.default_timezone = :local
 
-    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :ru
     config.i18n.fallbacks = {'ru' => 'en'}
 
-    config.before_initialize { @version = '0.0.0' }
+    config.before_initialize { TestGuru::VERSION }
   end
 end

@@ -1,7 +1,7 @@
 require_relative 'boot'
 
 require 'rails/all'
-require_relative 'version'
+#require_relative 'version'
 #require 'version'
 
 # Require the gems listed in Gemfile, including any gems
@@ -9,7 +9,7 @@ require_relative 'version'
 Bundler.require(*Rails.groups)
 
 module TestGuru
-  include Version
+  #include Version
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2

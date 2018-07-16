@@ -13,17 +13,17 @@ categ = Array.new(4) do |i|
 end
 
 
-Test.create(title: 'Ruby', level: 2, category_id: categ[0].id)
-Test.create(title: 'HTML', level: 1, category_id: categ[1].id)
-Test.create(title: 'CSS', level: 1, category_id: categ[1].id)
-Test.create(title: 'PHP', level: 2, category_id: categ[2].id)
-Test.create(title: 'Delphi', level: 2, category_id: categ[3].id)
+Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id)
+Test.create!(title: 'HTML', level: 1, category_id: categ[1].id)
+Test.create!(title: 'CSS', level: 1, category_id: categ[1].id)
+Test.create!(title: 'PHP', level: 2, category_id: categ[2].id)
+Test.create!(title: 'Delphi', level: 2, category_id: categ[3].id)
 
 test_objects = Test.all
 
-User.create(name: 'Vova', password: '123')
-User.create(name: 'Kolya', password: '123')
-User.create(name: 'Vika', password: '123')
+User.create!(name: 'Vova', password: '123')
+User.create!(name: 'Kolya', password: '123')
+User.create!(name: 'Vika', password: '123')
 
 users_object = User.all
 

@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+  has_many :traveled_tests
   def test_by_level(level)
-    tests_id = self.tests_travelled.split(',')
     tests = []
-    tests_id.each { |id| tests << Test.where('id = ? AND level = ?', id.to_i, level) }
-    tests
+    tests << TraveledTest.where('user_id = ?', self.id)
+    tests.each do |i|
+      Test.where('id = ? AND level = ?', i.ids, level)
+    end
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_13_122843) do
+ActiveRecord::Schema.define(version: 2018_07_16_074629) do
 
   create_table "answers", force: :cascade do |t|
     t.boolean "correct", default: false, null: false
@@ -40,8 +40,16 @@ ActiveRecord::Schema.define(version: 2018_07_13_122843) do
     t.integer "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "passed", default: "f"
     t.index ["category_id"], name: "index_tests_on_category_id"
+  end
+
+  create_table "traveled_tests", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "test_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["test_id"], name: "index_traveled_tests_on_test_id"
+    t.index ["user_id"], name: "index_traveled_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -49,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_07_13_122843) do
     t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "tests_travelled"
   end
 
 end

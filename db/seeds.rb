@@ -8,9 +8,8 @@
 
 
 
-categ = []
-4.times do |i|
-  categ <<  Category.create!(title: "Category ##{i}")
+categ = Array.new(4) do |i|
+  Category.create!(title: "Category ##{i}")
 end
 
 
@@ -22,17 +21,25 @@ Test.create(title: 'Delphi', level: 2, category_id: categ[3].id)
 
 test_objects = Test.all
 
-User.create(name: 'Vova', password: '123', tests_travelled: test_objects[0].id.to_s + ','+ test_objects[1].id.to_s)
-User.create(name: 'Kolya', password: '123', tests_travelled: +test_objects[1].id.to_s)
-User.create(name: 'Vika', password: '123', tests_travelled: +test_objects[2].id.to_s)
+User.create(name: 'Vova', password: '123')
+User.create(name: 'Kolya', password: '123')
+User.create(name: 'Vika', password: '123')
 
-5.times do |i|
+users_object = User.all
+
+question_objects = Array.new(5) do |i|
   Question.create!(body: "Question ##{i+1}", test_id: test_objects[i].id )
 end
 
-question_objects = Question.all
+
 5.times do |i|
   Answer.create!(question_id: question_objects[i].id)
 end
+
+3.times do |i|
+  TraveledTest.create!(user_id: users_object[i].id, test_id: test_objects[i].id )
+end
+  TraveledTest.create!(user_id: users_object[0].id, test_id: test_objects[1].id )
+
 
 

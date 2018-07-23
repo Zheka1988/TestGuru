@@ -1,14 +1,8 @@
 class User < ApplicationRecord
-  has_many :traveled_tests
+  has_many :tests_users
+  has_many :tests, through: :tests_users
 
   def test_by_level(level)
-=begin
-    TraveledTest.where('user_id = ?', self.id)
-    tests.each do |i|
-      Test.where('id = ? AND level = ?', i.ids, level)
-    end
-=end
+    Test.joins(:tests_users).where(level: level, tests_users: { user_id: self.id})
   end
-# Не получается сообразить как это делается
-
 end

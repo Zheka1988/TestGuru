@@ -15,7 +15,7 @@ class Test < ApplicationRecord
   scope :compound, -> { where(level: 5..Float::INFINITY) }
 
   validates :title, presence: true, uniqueness: true
-  validates :level, numericality: {only_integer: true}, uniqueness: true
+  validates :level, numericality: {only_integer: true}
 
   def self.with_category(title)
     by_category(title).pluck(:title)

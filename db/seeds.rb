@@ -17,11 +17,11 @@ User.create!(name: 'Vika', password: '123', email: 'vika@mail.ru')
 
 users_object = User.all
 
-Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id)
-Test.create!(title: 'HTML', level: 1, category_id: categ[1].id)
-Test.create!(title: 'CSS', level: 1, category_id: categ[1].id)
-Test.create!(title: 'PHP', level: 2, category_id: categ[2].id)
-Test.create!(title: 'Delphi', level: 2, category_id: categ[3].id)
+Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id, author_id: users_object[1].id)
+Test.create!(title: 'HTML', level: 1, category_id: categ[1].id, author_id: users_object[1].id)
+Test.create!(title: 'CSS', level: 1, category_id: categ[1].id, author_id: users_object[2].id)
+Test.create!(title: 'PHP', level: 2, category_id: categ[2].id, author_id: users_object[2].id)
+Test.create!(title: 'Delphi', level: 2, category_id: categ[3].id, author_id: users_object[0].id)
 
 test_objects = Test.all
 

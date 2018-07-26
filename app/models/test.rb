@@ -1,7 +1,10 @@
 class Test < ApplicationRecord
   belongs_to :category
-  has_many :questions
-  has_many :traveled_tests
+  belongs_to :user
+  has_many :questions, dependent: :destroy
+  has_many :tests_users, dependent: :destroy
+  has_many :users, through: :tests_users
+
 
   scope :by_category, ->(title) { joins(:category)
                                   .where(categories: { title: title })

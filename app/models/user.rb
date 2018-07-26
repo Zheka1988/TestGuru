@@ -1,14 +1,10 @@
 class User < ApplicationRecord
-  has_many :traveled_tests
+  has_many :tests #dependent: :destroy - не добавляю т.к. пользователя
+  # можно удалить, а тесты должны остаться
+  has_many :tests_users, dependent: :destroy
+  has_many :tests, through: :tests_users
 
   def test_by_level(level)
-=begin
-    TraveledTest.where('user_id = ?', self.id)
-    tests.each do |i|
-      Test.where('id = ? AND level = ?', i.ids, level)
-    end
-=end
+    tests.where(level: level)
   end
-# Не получается сообразить как это делается
-
 end

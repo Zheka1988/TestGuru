@@ -3,10 +3,9 @@ class User < ApplicationRecord
   has_many :tests_users, dependent: :destroy
   has_many :tests, through: :tests_users
 
-  scope :test_by_level, -> { where(level: level)}
+  validates :name, :email, presence: true
 
-
-  validates :name, presence: true
-  validates :email, presence: true
-
+  def test_by_level(level)
+    tests.where(level: level)
+  end
 end

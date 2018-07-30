@@ -1,7 +1,7 @@
 class Category < ApplicationRecord
-  has_many :tests, dependent: :destroy
-
   default_scope { order(created_at: :asc) }
+
+  has_many :tests, dependent: :destroy
 
   validates :title, presence: true
 end

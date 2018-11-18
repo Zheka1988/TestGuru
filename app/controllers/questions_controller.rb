@@ -18,6 +18,7 @@ class QuestionsController < ApplicationController
 
   def create
     @question = @test.questions.create(question_params)
+    @save_id = nil
     render plain: "Question was created"
   end
 

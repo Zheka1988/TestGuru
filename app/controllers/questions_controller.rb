@@ -1,5 +1,7 @@
 class QuestionsController < ApplicationController
-  before_action :find_test
+  before_action :find_test, only: [:index, :create]
+  before_action :find_question, only: [:show, :destroy]
+
   rescue_from ActiveRecord::RecordNotFound, with: :resque_question_not_found
 
   def index
@@ -7,7 +9,6 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @question = @test.questions.find(params[:id])
     render plain: @question.body
   end
 
@@ -21,7 +22,6 @@ class QuestionsController < ApplicationController
   end
 
   def destroy
-    @question = @test.questions.find(params[:id])
     @question.destroy
     render plain: "Question was deleted"
   end
@@ -32,9 +32,12 @@ class QuestionsController < ApplicationController
     params.require(:question).permit(:body)
   end
 
-
   def find_test
     @test = Test.find(params[:test_id])
+  end
+
+  def find_question
+    @question = Question.find(params[:id])
   end
 
   def resque_question_not_found

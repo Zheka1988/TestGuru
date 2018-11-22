@@ -1,34 +1,45 @@
 class QuestionsController < ApplicationController
-  before_action :find_test, only: [:index, :create]
-  before_action :find_question, only: [:show, :destroy]
+  before_action :find_test, only: [:new, :create]
+  before_action :find_question, only: [:show, :edit, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :resque_question_not_found
 
-  def index
-    render plain: @test.questions.pluck(:body, :id)
-  end
-
   def show
-    render plain: @question.body
+
   end
 
   def new
-
+    @question = Question.new
   end
 
   def create
     @question = @test.questions.create(question_params)
-    @save_id = nil
-    render plain: "Question was created"
+    if @question.save
+      redirect_to @test
+    else
+      render :new
+    end
+  end
+
+  def edit
+
+  end
+
+  def update
+    if @question.update(question_params)
+      redirect_to @test
+    else
+      render :edit
+    end
   end
 
   def destroy
     @question.destroy
-    render plain: "Question was deleted"
+    redirect_to @test
   end
 
-
   private
+
   def question_params
     params.require(:question).permit(:body)
   end
@@ -39,10 +50,12 @@ class QuestionsController < ApplicationController
 
   def find_question
     @question = Question.find(params[:id])
+    @test = Test.find(@question.test_id)
   end
 
   def resque_question_not_found
     render plain: "Question was not found"
   end
+
 
 end

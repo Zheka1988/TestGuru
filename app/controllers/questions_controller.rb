@@ -1,7 +1,7 @@
 class QuestionsController < ApplicationController
   before_action :find_test, only: [:new, :create]
   before_action :find_question, only: [:show, :edit, :update, :destroy]
-  before_action :find_test_by_question, only: [:show, :edit, :update, :destroy]
+  before_action :find_test_by_question, only: [:show, :update, :destroy]
 
   rescue_from ActiveRecord::RecordNotFound, with: :resque_question_not_found
 

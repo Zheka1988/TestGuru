@@ -1,0 +1,14 @@
+<% resource.each do |test| %>
+  <tr>
+    <td> <%= test.title %> </td>
+      <td> <%= test.level %> </td>
+      <td> <%= User.find(test.author_id).name %> </td>
+      <td> <%= test.questions.count %></td>
+      <td> <%=link_to "Edit",  edit_test_path(test) %></td>
+      <td> <%= link_to "Show", test_path(test) %></td>
+      <td> <%= link_to "Delete",
+                    test_path(test),
+                    method: :delete,
+                    data: { confirm: 'Areyou sure?' } %></td>
+  </tr>
+<% end %>

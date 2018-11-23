@@ -1,8 +1,5 @@
-<h2><%= question_header_edit%> </h2>
+<h2>Edit <%= question_header %> Questions</h2>
 
-<%= @test.title %> <br>
-<%= @question.body %> <br>
-
-<%= render  partial: 'form' %>
+<%= render 'form', resource: [@test, @question] %>
 
 <%= link_to 'Back', test_path(@test) %>

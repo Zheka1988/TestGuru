@@ -18,11 +18,11 @@ User.create!(name: 'Vika', password: '123', email: 'vika@mail.ru')
 
 user_objects = User.all
 
-Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id, author_id: user_objects[1].id)#, user_id:users_object[2].id )
-Test.create!(title: 'HTML', level: 1, category_id: categ[1].id, author_id: user_objects[1].id)#, user_id:users_object[2].id)
-Test.create!(title: 'CSS', level: 1, category_id: categ[1].id, author_id: user_objects[1].id)#, user_id:users_object[2].id)
-Test.create!(title: 'PHP', level: 2, category_id: categ[2].id, author_id: user_objects[0].id)#, user_id:users_object[2].id)
-Test.create!(title: 'Delphi', level: 2, category_id: categ[2].id, author_id: user_objects[0].id)#, user_id:users_object[2].id)
+Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id, author: user_objects[1])#, user_id:users_object[2].id )
+Test.create!(title: 'HTML', level: 1, category_id: categ[1].id, author: user_objects[1])#, user_id:users_object[2].id)
+Test.create!(title: 'CSS', level: 1, category_id: categ[1].id, author: user_objects[1])#, user_id:users_object[2].id)
+Test.create!(title: 'PHP', level: 2, category_id: categ[2].id, author: user_objects[0])#, user_id:users_object[2].id)
+Test.create!(title: 'Delphi', level: 2, category_id: categ[2].id, author: user_objects[0])#, user_id:users_object[2].id)
 
 test_objects = Test.all
 

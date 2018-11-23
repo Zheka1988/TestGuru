@@ -8,11 +8,28 @@
 </p>
 <p>
   <strong>Author:</strong>
-  <% author = User.find(@test.author_id) %>
-  <%= author.name %>
+  <%= @test.author.name %>
 </p>
 
-<%= render file: "questions/index" %>
+<h5>Table questions</h5>
+<table>
+  <tr>
+    <th>Body Questions</th>
+    <th colspan ="3">Action</th>
+  </tr>
+    <% @test.questions.each do |question| %>
+    <tr>
+      <td><%=  question.body %></td>
+      <td><%= link_to 'Show', question_path(question) %></td>
+      <td><%= link_to 'Edit', edit_question_path(question) %></td>
+      <td><%= link_to 'Delete',
+                    question_path(question),
+                    method: :delete,
+                    data: { confirm: 'Areyou sure?' }%></td>
+    </tr>
+    <% end %>
+</table><br>
+<%= link_to 'Create Question', new_test_question_path(@test) %><br>
 
 <%= link_to 'Back', tests_path %>
 

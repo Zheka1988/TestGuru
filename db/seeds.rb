@@ -9,24 +9,22 @@
 
 
 categ = Array.new(4) do |i|
-  Category.create!(title: "Category ##{i}")
+  Category.create!(title: "Category ##{i+1}")
 end
 
 User.create!(name: 'Vova', password: '123', email: 'vova@mail.ru')
 User.create!(name: 'Kolya', password: '123', email: 'kolya@mail.ru')
 User.create!(name: 'Vika', password: '123', email: 'vika@mail.ru')
 
-users_object = User.all
+user_objects = User.all
 
-Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id, author: users_object[1])
-Test.create!(title: 'HTML', level: 1, category_id: categ[1].id, author: users_object[1])
-Test.create!(title: 'CSS', level: 1, category_id: categ[1].id, author: users_object[2])
-Test.create!(title: 'PHP', level: 2, category_id: categ[2].id, author: users_object[2])
-Test.create!(title: 'Delphi', level: 2, category_id: categ[3].id, author: users_object[0])
+Test.create!(title: 'Ruby', level: 2, category_id: categ[0].id, author: user_objects[1])#, user_id:users_object[2].id )
+Test.create!(title: 'HTML', level: 1, category_id: categ[1].id, author: user_objects[1])#, user_id:users_object[2].id)
+Test.create!(title: 'CSS', level: 1, category_id: categ[1].id, author: user_objects[1])#, user_id:users_object[2].id)
+Test.create!(title: 'PHP', level: 2, category_id: categ[2].id, author: user_objects[0])#, user_id:users_object[2].id)
+Test.create!(title: 'Delphi', level: 2, category_id: categ[2].id, author: user_objects[0])#, user_id:users_object[2].id)
 
 test_objects = Test.all
-
-
 
 question_objects = Array.new(5) do |i|
   Question.create!(body: "Question ##{i+1}", test_id: test_objects[i].id )
@@ -37,3 +35,9 @@ end
   Answer.create!(body: "Answer #{i}", question_id: question_objects[i].id)
 end
 
+=begin
+Author.create!(name: 'Author 1', test_id: 2)
+Author.create!(name: 'Author 2', test_id: 1)
+
+authors_object = Author.all
+=end

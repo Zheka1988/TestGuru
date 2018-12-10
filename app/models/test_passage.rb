@@ -4,28 +4,19 @@ class TestPassage < ApplicationRecord
   belongs_to :current_question, class_name: 'Question', optional: true
 
   before_validation :before_validation_set_first_question, on: :create
-  @number_question = 0
 
   def completed?
     current_question.nil?
   end
 
-  def finish_test
-    if total_questions_count == correct_answers.count
-      "test passed successfully"
-    end
-  end
-
   def accept!(answer_ids)
-    if correct_answer?(answer_ids)
-      self.correct_questions += 1
-    end
+    self.correct_questions += 1 if correct_answer?(answer_ids)
     self.current_question = next_question
     save!
   end
 
   def result
-    100 * self.correct_questions / test.questions.count
+    100 * self.correct_questions / test.questions.count.to_f
   end
 
   def passed?
@@ -37,7 +28,7 @@ class TestPassage < ApplicationRecord
   end
 
   def number_current_question
-    total_questions_count - remaining_questions.count
+    test.questions.order(:id).where('id < ?', current_question.id).count + 1
   end
 
   private
@@ -47,11 +38,7 @@ class TestPassage < ApplicationRecord
   end
 
   def correct_answer?(answer_ids)
-    correct_answers_count = correct_answers.count
-
-    (correct_answers_count == correct_answers.where(id: answer_ids).count) &&
-    correct_answers_count == answer_ids.count
-    #correct_answers.ids.sort == answer_ids.map(&:to_i).sort
+    correct_answers.ids.sort == answer_ids.map(&:to_i).sort if answer_ids.present?
   end
 
   def correct_answers
@@ -59,7 +46,7 @@ class TestPassage < ApplicationRecord
   end
 
   def next_question
-    test.questions.order(:id).where('id > ?', current_question.id).first
+    remaining_questions.first
   end
 
   def remaining_questions

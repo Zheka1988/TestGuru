@@ -1,0 +1,15 @@
+<h1>The <%= @test_passage.test.title %> Test was completed!</h1>
+
+<% if @test_passage.passed? %>
+  <h2 class='text-success'> Тест успешно пройден! <br>
+    Вы выполнили: <%= @test_passage.result %> %
+  </h2>
+<% else %>
+  <h2 class='text-danger'> Тест не пройден, попробуйте еще раз! <br>
+    Вы выполнили: <%= @test_passage.result %> %
+  </h2>
+<% end %>
+
+
+
+<%= link_to 'Main', tests_path %>

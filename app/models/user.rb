@@ -2,6 +2,7 @@ require 'digest/sha1'
 
 class User < ApplicationRecord
   include Auth
+  #has_secure_password
 
   has_many :own_tests, class_name: "Test", dependent: :nullify
   # has_many :tests_users, dependent: :destroy

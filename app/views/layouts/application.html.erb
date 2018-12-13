@@ -12,8 +12,11 @@
   <body>
     <% if logged_in? %>
       <p class ="nav user">Welcome, <b><%=current_user.email %></b> <%= link_to 'Guru', tests_path %></p>
+      <%= render 'shared/header_in' %>
+    <% else %>
+      <%= render 'shared/header_out' %>
     <% end %>
-    <%= render 'shared/header' %>
+
 
     <%= yield %>
 

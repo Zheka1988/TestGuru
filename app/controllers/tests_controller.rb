@@ -1,6 +1,9 @@
 class TestsController < ApplicationController
   before_action :find_test, only: [:show, :edit, :update, :destroy, :start]
   before_action :find_user, only: :start
+
+  before_action :authenticate_user!
+
   def index
     @tests = Test.all
   end

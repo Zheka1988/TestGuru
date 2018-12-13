@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   root to: 'tests#index'
 
+  get 'sessions/new'
+  get 'users/new'
+  get 'sessions/exit'
+
+
   resources :tests do
     resources :questions, shallow: true, except: :index do
       resources :answers, shallow: true, except: :index
@@ -15,5 +20,11 @@ Rails.application.routes.draw do
     get :result, on: :member
   end
 
+  get :signup, to: 'users#new'
+  resources :users, only: :create
 
+  get :login, to: 'sessions#new'
+  get :exit, to: 'sessions#exit'
+
+  resources :sessions, only: [:create, :exit]
 end

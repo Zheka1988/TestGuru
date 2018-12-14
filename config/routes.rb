@@ -4,6 +4,10 @@ Rails.application.routes.draw do
 
   root to: 'tests#index'
 
+  get 'users/new'
+  get 'sessions/new'
+  get 'sessions/exit'
+
   resources :tests do
     resources :questions, shallow: true, except: :index do
       resources :answers, shallow: true, except: :index

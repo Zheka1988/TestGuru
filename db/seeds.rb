@@ -12,9 +12,9 @@ categ = Array.new(4) do |i|
   Category.create!(title: "Category ##{i+1}")
 end
 
-User.create!(name: 'Vova', password: '123', email: 'vova@mail.ru')
-User.create!(name: 'Kolya', password: '123', email: 'kolya@mail.ru')
-User.create!(name: 'Vika', password: '123', email: 'vika@mail.ru')
+User.create!(name: 'Vova', email: 'vova@mail.ru', )
+User.create!(name: 'Kolya', email: 'kolya@mail.ru')
+User.create!(name: 'Vika', email: 'vika@mail.ru')
 
 user_objects = User.all
 

@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_095620) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
-    t.index ["question_id"], name: "index_answers_on_question_id"
+    t.index ["question_id"], name: "index_answers_on_questions_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_12_06_095620) do
     t.integer "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["test_id"], name: "index_questions_on_test_id"
+    t.index ["test_id"], name: "index_questions_on_tests_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
@@ -56,16 +56,16 @@ ActiveRecord::Schema.define(version: 2018_12_06_095620) do
     t.integer "user_id"
     t.integer "author_id"
     t.index ["author_id"], name: "index_tests_on_author_id"
-    t.index ["category_id"], name: "index_tests_on_category_id"
+    t.index ["category_id"], name: "index_tests_on_categories_id"
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
     t.string "name", null: false
-    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "email"
+    t.string "password_digest"
   end
 
 end

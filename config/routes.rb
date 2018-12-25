@@ -15,5 +15,11 @@ Rails.application.routes.draw do
     get :result, on: :member
   end
 
+  get :signup, to: 'users#new'
+  resources :users, only: [:create, :new]
 
+  get :login, to: 'sessions#new'
+  get :exit, to: 'sessions#exit'
+
+  resources :sessions, only: [:create, :exit]
 end

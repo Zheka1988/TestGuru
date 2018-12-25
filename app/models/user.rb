@@ -25,6 +25,14 @@ class User < ApplicationRecord
     tests.where(level: level)
   end
 
+  def admin?
+    self.is_a?(Admin)
+  end
+
+  def name_with_initial
+    "#{last_name} #{first_name}"
+  end
+
   def test_passage(test)
     test_passages.order(id: :desc).find_by(test: test)
   end

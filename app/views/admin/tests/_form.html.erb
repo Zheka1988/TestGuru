@@ -11,13 +11,8 @@
   </p><br>
 
   <p>
-    <%= form.label :categy_id %>:
+    <%= form.label :categy_id %>
     <%= form.collection_select :category_id, Category.all, :id, :title, promt: true %>
-  </p>
-
-  <p>
-    <%= form.label :author %>:
-    <%= form.collection_select :author_id, User.all, :id, :name, promt: true %>
   </p>
 
   <p>
@@ -25,3 +20,9 @@
   </p>
 
   <% end %>
+
+<!--
+  <p>
+    <%=# form.label :author %>
+    <%=# form.collection_select :author_id, Admin.all, :id, :name_with_initial, {:selected => Admin.all.map(&:id)}, promt: true %>
+  </p> -->

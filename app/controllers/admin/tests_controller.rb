@@ -11,6 +11,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def new
+    @user  = @current_user
     @test = Test.new
   end
 
@@ -20,7 +21,7 @@ class Admin::TestsController < Admin::BaseController
 
   def create
     @test = Test.new(test_params)
-
+    @test.author_id = current_user.id
     if @test.save
       redirect_to admin_tests_path
     else
@@ -47,6 +48,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   private
+
   def find_test
     @test = Test.find(params[:id])
   end

@@ -1,12 +1,12 @@
 <h2>All tests</h2>
-<%= link_to 'Create New Test', new_test_path %>
+
 <table>
   <tr>
     <th>Title</th>
     <th>Level</th>
     <th>Author</th>
     <th>Count_Q</th>
-    <th colspan="4">Action</th>
+    <th>Action</th>
   </tr>
-  <%= render partial: "shared/test", collection: @tests %>
+  <%= render partial: "test", collection: @tests %>
 </table>

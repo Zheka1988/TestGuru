@@ -5,9 +5,7 @@ class Admin::QuestionsController < Admin::BaseController
 
   rescue_from ActiveRecord::RecordNotFound, with: :resque_question_not_found
 
-  def index
-
-  end
+  def index; end
 
   def show; end
 

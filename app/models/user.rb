@@ -29,7 +29,7 @@ class User < ApplicationRecord
     self.is_a?(Admin)
   end
 
-  def name_with_initial
+  def full_name
     "#{last_name} #{first_name}"
   end
 

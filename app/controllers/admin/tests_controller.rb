@@ -6,18 +6,13 @@ class Admin::TestsController < Admin::BaseController
     @tests = Test.all
   end
 
-  def show
-
-  end
+  def show; end
 
   def new
-    @user  = @current_user
     @test = Test.new
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def create
     @test = Test.new(test_params)
@@ -42,11 +37,6 @@ class Admin::TestsController < Admin::BaseController
     redirect_to admin_tests_path
   end
 
-  def start
-    current_user.tests.push(@test)
-    redirect_to current_user.test_passage(@test)
-  end
-
   private
 
   def find_test
@@ -54,7 +44,7 @@ class Admin::TestsController < Admin::BaseController
   end
 
   def test_params
-    params.require(:test).permit(:title, :level, :category_id, :author_id)
+    params.require(:test).permit(:title, :level, :category_id)
   end
 
   def resque_question_not_found

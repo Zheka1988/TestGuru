@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  root to: 'admin/tests#index'
+
+  devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout },
+              :controllers => { sessions: 'sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  root to: 'tests#index'
-
-  resources :tests do
-    resources :questions, shallow: true, except: :index do
-      resources :answers, shallow: true, except: :index
+  resources :tests, only: :index do
+    resources :questions,  only: :index do
+      resources :answers,  only: :index
     end
     post :start, on: :member
   end
@@ -15,11 +17,15 @@ Rails.application.routes.draw do
     get :result, on: :member
   end
 
-  get :signup, to: 'users#new'
-  resources :users, only: [:create, :new]
+  namespace :admin do
+    resources :tests, shallow: true do
+      resources :questions, shallow: true do
+        resources :answers, shallow: true
+      end
+    end
+  end
+  # get :signup, to: 'users#new'
+  # get :login, to: 'sessions#new'
+  # get :exit, to: 'sessions#exit'
 
-  get :login, to: 'sessions#new'
-  get :exit, to: 'sessions#exit'
-
-  resources :sessions, only: [:create, :exit]
 end

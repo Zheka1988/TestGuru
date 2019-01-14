@@ -1,0 +1,48 @@
+ru:
+  hello: "Привет мир"
+
+  tests:
+    index:
+      header: "Доступные тесты"
+      title: "Название"
+      level: "Уровень"
+      author: "Автор"
+      count_q: "Кол-во вопросов"
+      action:  "Действие"
+    test:
+      start: "Пройти тест"
+
+  admin:
+    tests:
+      index:
+        header: "Все тесты"
+        create: "Создать новый тест"
+
+        title: "Название"
+        level: "Уровень"
+        author: "Автор"
+        count_q: "Кол-во вопросов"
+        action: "Действия"
+      test:
+        edit: "Изменить"
+        show: "Показать"
+        delete: "Удалить"
+        shure: "Вы уверенны?"
+      new:
+        new_t: "Новый тест"
+      edit:
+        edit_t: "Редактировать тест"
+
+      show:
+        title: "Название"
+        level: "Уровень"
+        author: "Автор"
+
+  helpers:
+    submit:
+      test:
+        create: "Создать тест"
+        update: "Обновить тест"
+
+    select:
+      prompt: "Выберите категорию"

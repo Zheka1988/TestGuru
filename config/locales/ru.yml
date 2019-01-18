@@ -1,13 +1,19 @@
 ru:
   hello: "Привет мир"
 
+  test_passages:
+    show:
+      header: "Прохождение теста по %{title}"
+      number_q: "Общее количество вопросов: "
+      count_q: "Вопрос номер: "
+
   tests:
     index:
       header: "Доступные тесты"
       title: "Название"
       level: "Уровень"
       author: "Автор"
-      count_q: "Кол-во вопросов"
+      count_q: "Вопросы"
       action:  "Действие"
     test:
       start: "Пройти тест"
@@ -21,7 +27,7 @@ ru:
         title: "Название"
         level: "Уровень"
         author: "Автор"
-        count_q: "Кол-во вопросов"
+        count_q: "Вопросы"
         action: "Действия"
       test:
         edit: "Изменить"

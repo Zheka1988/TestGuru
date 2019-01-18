@@ -8,20 +8,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= render 'shared/flash' %>
-    <% if user_signed_in? %>
-      <p class ="nav user">
-        Welcome, <b><%=current_user.email %></b> Guru |
-        <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
-      </p>
-    <% end -%>
-    <%= render 'shared/flash' %>
 
-    <%= yield %>
+    <%= render 'shared/nav' %>
 
-    <%= render 'shared/footer' %>
+    <div class="container">
+      <%= render 'shared/flash' %>
+      <%= yield %>
+      <%= render 'shared/footer' %>
+    </div>
   </body>
 </html>

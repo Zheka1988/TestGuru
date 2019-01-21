@@ -37,4 +37,12 @@ class User < ApplicationRecord
     test_passages.order(id: :desc).find_by(test: test)
   end
 
+  def username
+    if full_name.blank?
+      self.email.split('@')[0]
+    else
+      self.full_name
+    end
+  end
+
 end

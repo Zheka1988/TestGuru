@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root to: 'admin/tests#index'
+  root to: 'tests#index'
 
   devise_for :users, path: :gurus, path_names: { sign_in: :login, sign_out: :logout },
               :controllers => { sessions: 'sessions' }
@@ -24,8 +24,5 @@ Rails.application.routes.draw do
       end
     end
   end
-  # get :signup, to: 'users#new'
-  # get :login, to: 'sessions#new'
-  # get :exit, to: 'sessions#exit'
 
 end

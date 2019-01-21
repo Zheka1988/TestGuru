@@ -1,27 +1,28 @@
-<p>
-  <strong><%= t('.title') %></strong>
-  <%= @test.title %>
-</p>
-<p>
-  <strong><%= t('.level') %></strong>
-  <%= @test.level %>
-</p>
-<p>
-  <strong><%= t('.author') %></strong>
-  <%= @test.author.name %>
-</p>
+<div class="row justify-content-md-center mt-3 text-center">
+  <div class = "col col-md-auto ">
+    <strong><%= t('.title') %>:&nbsp;</strong>
+    <%= @test.title %> <br>
+    <strong><%= t('.level') %>:&nbsp;</strong>
+    <%= @test.level %> <br>
+    <strong><%= t('.author') %>:&nbsp;</strong>
+    <%= @test.author.name %> <br>
 
-<h5>Table questions</h5>
-<table>
-  <tr>
-    <th>Body Questions</th>
-    <th colspan ="3">Action</th>
-  </tr>
-  <%= render partial: "shared/question", collection: @test.questions %>
+    <h5 class="text-center text-secondary">Table questions</h5>
+    <table class="table table-hover table-sm table-responsive text-center">
+      <thead class="thead-dark ">
+        <tr>
+          <th>Body Questions</th>
+          <th colspan ="3">Action</th>
+        </tr>
+      </thead>
+      <%= render partial: "shared/question", collection: @test.questions %>
+    </table>
+  </div>
+</div>
 
-</table><br>
-<%= link_to 'Create Question', new_admin_test_question_path(@test) %><br>
-
-<%= link_to 'Back', admin_tests_path %>
-
-
+<div class="row">
+  <div class="col text-center">
+    <%= link_to 'Create Question', new_admin_test_question_path(@test), class:'text-dark' %>&nbsp;|&nbsp;
+    <%= link_to 'Back', admin_tests_path, class: 'text-dark'%>
+  </div>
+</div>

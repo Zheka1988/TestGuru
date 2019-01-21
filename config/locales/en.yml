@@ -1,6 +1,11 @@
 en:
   hello: "Hello world"
 
+  test_passages:
+    show:
+      header: "Passing to %{title} test"
+      number_q: "Total number of questions: "
+      count_q: "Question number: "
   tests:
     index:
       header: "Tricky tests"

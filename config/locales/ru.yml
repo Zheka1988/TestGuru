@@ -6,6 +6,9 @@ ru:
       header: "Прохождение теста по %{title}"
       number_q: "Общее количество вопросов: "
       count_q: "Вопрос номер: "
+    gist:
+      success: "Gist создан успешно %{url}"
+      failure: "Gist не был создан"
 
   tests:
     index:
@@ -43,6 +46,12 @@ ru:
         title: "Название"
         level: "Уровень"
         author: "Автор"
+    gists:
+      index:
+        col_1: "Вопрос"
+        col_2: "Ссылка"
+        col_3: "Пользователь"
+
 
   helpers:
     submit:
@@ -52,3 +61,7 @@ ru:
 
     select:
       prompt: "Выберите категорию"
+
+  services:
+    github:
+      description: "Вопрос по %{title} из ТестГуру"

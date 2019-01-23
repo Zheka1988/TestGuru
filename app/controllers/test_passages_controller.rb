@@ -11,15 +11,14 @@ class TestPassagesController < ApplicationController
   def gist
     result = GistQuestionService.new(@test_passage.current_question).call
 
-    unless result.html_url.blank?
+    flash_options = if !(result.html_url.blank?)
       current_user.gists.create(question: @test_passage.current_question, url: result.html_url)
-
-      flash["alert-info"] = t('.success', url: result.html_url)
+      { notice: t('.success', url: result.html_url) }
     else
-      flash["alert-danger"] = t('.failure')
+      { alert: t('.failure') }
     end
 
-    redirect_to @test_passage
+    redirect_to @test_passage, flash_options
   end
 
   def update

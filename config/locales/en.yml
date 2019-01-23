@@ -56,5 +56,4 @@ en:
         create: "Create test"
         update: "Update test"
   services:
-    github:
-      description: "Question %{title} from TestGuru"
+    description: "Question %{title} from TestGuru"

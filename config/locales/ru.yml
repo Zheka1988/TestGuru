@@ -63,5 +63,4 @@ ru:
       prompt: "Выберите категорию"
 
   services:
-    github:
-      description: "Вопрос по %{title} из ТестГуру"
+    description: "Вопрос по %{title} из ТестГуру"

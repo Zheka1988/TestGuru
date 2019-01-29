@@ -41,7 +41,8 @@ ru:
         new_t: "Новый тест"
       edit:
         edit_t: "Редактировать тест"
-
+      form_inline:
+        submit: "OK"
       show:
         title: "Название"
         level: "Уровень"

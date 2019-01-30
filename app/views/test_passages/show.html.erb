@@ -17,8 +17,18 @@
               </div>
           <% end %>
           <p><%= link_to t('.gist'), gist_test_passage_path(@test_passage), method: :post %></p>
-          <p><%= form.submit 'Next', class: 'btn btn-outline-primary btn-sm' %></p>
+          <p><%= form.submit 'Next', class: 'btn btn-outline-primary btn-sm next' %></p>
         <% end %>
+    <%= content_tag :div, class: 'myProgress' do %>
+        <%= content_tag :div,
+                class: ['progress-bar', 'bg-danger'],
+                value: @test_passage.number_current_question,
+                max: @test_passage.total_questions_count do %>
+        <% end %>
+    <% end %>
+
+
     </div>
   </div>
 </div>
+

@@ -8,7 +8,7 @@ document.addEventListener('turbolinks:load', function() {
       // sleep(1000)
     })
     email.addEventListener('mouseout', ()=> {
-      let hint = document.querySelector('#tooltip')
+      var hint = document.querySelector('#tooltip')
       hint.classList.add('hide')
       // sleep(1000)
     })

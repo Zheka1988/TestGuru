@@ -8,7 +8,7 @@ document.addEventListener('turbolinks:load', function() {
     var percent = ((questionNumber * 100) / questionsCount).toFixed(1) + '%'
     progressBar.style.width = percent;
     progressBar.innerHTML = percent;
-    // alert('hello')
+
   }
 
 })

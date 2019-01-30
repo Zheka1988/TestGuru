@@ -10,11 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_22_073909) do
+ActiveRecord::Schema.define(version: 2019_01_30_100515) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "answers", force: :cascade do |t|
     t.boolean "correct", default: false, null: false
-    t.integer "question_id"
+    t.bigint "question_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "body"
@@ -28,8 +31,8 @@ ActiveRecord::Schema.define(version: 2019_01_22_073909) do
   end
 
   create_table "gists", force: :cascade do |t|
-    t.integer "question_id"
-    t.integer "user_id"
+    t.bigint "question_id"
+    t.bigint "user_id"
     t.string "url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -39,16 +42,16 @@ ActiveRecord::Schema.define(version: 2019_01_22_073909) do
 
   create_table "questions", force: :cascade do |t|
     t.text "body"
-    t.integer "test_id"
+    t.bigint "test_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["test_id"], name: "index_questions_on_test_id"
   end
 
   create_table "test_passages", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "test_id"
-    t.integer "current_question_id"
+    t.bigint "user_id"
+    t.bigint "test_id"
+    t.bigint "current_question_id"
     t.integer "correct_questions", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,13 +63,14 @@ ActiveRecord::Schema.define(version: 2019_01_22_073909) do
   create_table "tests", force: :cascade do |t|
     t.string "title", null: false
     t.integer "level", default: 1, null: false
-    t.integer "category_id"
+    t.bigint "category_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
-    t.integer "author_id"
+    t.bigint "user_id"
+    t.bigint "author_id"
     t.index ["author_id"], name: "index_tests_on_author_id"
     t.index ["category_id"], name: "index_tests_on_category_id"
+    t.index ["title", "level"], name: "index_tests_on_title_and_level", unique: true
     t.index ["user_id"], name: "index_tests_on_user_id"
   end
 
@@ -96,4 +100,14 @@ ActiveRecord::Schema.define(version: 2019_01_22_073909) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "gists", "questions"
+  add_foreign_key "gists", "users"
+  add_foreign_key "questions", "tests"
+  add_foreign_key "test_passages", "questions", column: "current_question_id"
+  add_foreign_key "test_passages", "tests"
+  add_foreign_key "test_passages", "users"
+  add_foreign_key "tests", "categories"
+  add_foreign_key "tests", "users"
+  add_foreign_key "tests", "users", column: "author_id"
 end

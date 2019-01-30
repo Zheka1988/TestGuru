@@ -3,7 +3,7 @@ document.addEventListener('turbolinks:load', function() {
 
   if (email) {
     email.addEventListener('mouseover', ()=> {
-      let hint = document.querySelector('#tooltip')
+      var hint = document.querySelector('#tooltip')
       hint.classList.remove('hide')
       // sleep(1000)
     })

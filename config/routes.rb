@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
-  get 'feedbacks/new'
-  get 'feedbacks/create'
+
   namespace :admin do
     get 'gists/index'
     delete 'gists/destroy'
   end
+
+  get 'feedbacks/new'
+  get 'feedbacks/create'
 
   root to: 'tests#index'
 

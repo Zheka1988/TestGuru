@@ -59,3 +59,10 @@ en:
         update: "Update test"
   services:
     description: "Question %{title} from TestGuru"
+
+  feedbacks_mailer:
+    feedback:
+      subject: "Feedback TestGuru"
+
+  feedbacks:
+      success: "Feedback success create"

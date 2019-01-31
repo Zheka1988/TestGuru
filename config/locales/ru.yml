@@ -65,3 +65,10 @@ ru:
 
   services:
     description: "Вопрос по %{title} из ТестГуру"
+
+  feedbacks_mailer:
+    feedback:
+      subject: "Отзыв о ТестГуру"
+
+  feedbacks:
+      success: "Отзыв успешно создан"

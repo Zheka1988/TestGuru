@@ -16,15 +16,16 @@ class Test < ApplicationRecord
 
   validates :title, presence: true
   validates :level, numericality: {only_integer: true, greater_than_or_equal_to: 0}
-  validate :one_title_one_level
+  #validate :one_title_one_level
+  validates :title, uniqueness: { scope: :level}
 
   def self.with_category(title)
     by_category(title).pluck(:title)
   end
 
-  def one_title_one_level
-    errors.add(:title)if self.class.where("level = ? AND title = ?", level, title).count > 1
-  end
+  # def one_title_one_level
+  #   errors.add(:title)if self.class.where("level = ? AND title = ?", level, title).count > 1
+  # end
 
 
 end

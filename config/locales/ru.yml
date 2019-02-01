@@ -72,3 +72,11 @@ ru:
 
   feedbacks:
       success: "Отзыв успешно создан"
+
+  activerecord:
+    errors:
+      models:
+        test:
+          attributes:
+            title:
+              blank: "Не может быть пустым"

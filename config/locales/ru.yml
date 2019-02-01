@@ -9,6 +9,8 @@ ru:
     gist:
       success: "Gist создан успешно %{url}"
       failure: "Gist не был создан"
+    result:
+      result_title: " Тест %{title} был завершен"
 
   tests:
     index:
@@ -52,7 +54,6 @@ ru:
         col_1: "Вопрос"
         col_2: "Ссылка"
         col_3: "Пользователь"
-
 
   helpers:
     submit:

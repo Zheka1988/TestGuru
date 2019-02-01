@@ -9,6 +9,8 @@ en:
     gist:
       success: "Gist create success %{url}"
       failure: "Gist don't create"
+    result:
+      result_title: " Test %{title} was completed"
 
   tests:
     index:

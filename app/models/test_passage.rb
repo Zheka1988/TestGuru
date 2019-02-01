@@ -16,7 +16,7 @@ class TestPassage < ApplicationRecord
   end
 
   def result
-    (100 * self.correct_questions / test.questions.count.to_f)round(1)
+    (100 * self.correct_questions / test.questions.count.to_f).round(1)
   end
 
   def passed?

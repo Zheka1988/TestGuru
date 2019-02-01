@@ -19,6 +19,7 @@ class Admin::TestsController < Admin::BaseController
     if @test.save
       redirect_to admin_tests_path
     else
+      # flash.notice = t('.fail')
       render :new
     end
     #debugger

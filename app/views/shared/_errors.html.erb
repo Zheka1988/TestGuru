@@ -4,7 +4,7 @@
 
       <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li > flash[:danger] =  <%= message %></li>
+        <li > <%= message %></li>
       <% end %>
       </ul>
 

@@ -16,6 +16,8 @@ class Admin::AnswersController < Admin::BaseController
     if @answer.save
       redirect_to admin_answer_path(@answer)
     else
+      # render plain: "#{@answer.errors.full_messages}"
+      #redirect_to admin_question_path(@question)
       render :new
     end
   end

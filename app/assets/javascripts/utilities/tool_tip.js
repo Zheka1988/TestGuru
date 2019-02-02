@@ -5,12 +5,12 @@ document.addEventListener('turbolinks:load', function() {
     email.addEventListener('mouseover', ()=> {
       var hint = document.querySelector('#tooltip')
       hint.classList.remove('hide')
-      // sleep(1000)
+
     })
     email.addEventListener('mouseout', ()=> {
       var hint = document.querySelector('#tooltip')
       hint.classList.add('hide')
-      // sleep(1000)
+
     })
   }
 })

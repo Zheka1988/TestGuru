@@ -7,8 +7,8 @@ document.addEventListener('turbolinks:load', function() {
 })
 
 function passwordComparsion() {
-  let password = document.querySelector('#user_password');
-  let passwordConfirmation = document.querySelector('#user_password_confirmation');
+  var password = document.querySelector('#user_password');
+  var passwordConfirmation = document.querySelector('#user_password_confirmation');
 
   if (passwordConfirmation.value == '') {
     passwordConfirmation.classList.remove('border-success');

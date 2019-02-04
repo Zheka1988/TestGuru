@@ -9,6 +9,8 @@ en:
     gist:
       success: "Gist create success %{url}"
       failure: "Gist don't create"
+    result:
+      result_title: " Test %{title} was completed"
 
   tests:
     index:
@@ -59,3 +61,18 @@ en:
         update: "Update test"
   services:
     description: "Question %{title} from TestGuru"
+
+  feedbacks_mailer:
+    feedback:
+      subject: "Feedback TestGuru"
+
+  feedbacks:
+      success: "Feedback success create"
+
+  activerecord:
+    errors:
+      models:
+        test:
+          attributes:
+            title:
+              blank: "Don't be blank"

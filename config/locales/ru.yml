@@ -9,6 +9,8 @@ ru:
     gist:
       success: "Gist создан успешно %{url}"
       failure: "Gist не был создан"
+    result:
+      result_title: " Тест %{title} был завершен"
 
   tests:
     index:
@@ -53,7 +55,6 @@ ru:
         col_2: "Ссылка"
         col_3: "Пользователь"
 
-
   helpers:
     submit:
       test:
@@ -65,3 +66,18 @@ ru:
 
   services:
     description: "Вопрос по %{title} из ТестГуру"
+
+  feedbacks_mailer:
+    feedback:
+      subject: "Отзыв о ТестГуру"
+
+  feedbacks:
+      success: "Отзыв успешно создан"
+
+  activerecord:
+    errors:
+      models:
+        test:
+          attributes:
+            title:
+              blank: "Не может быть пустым"

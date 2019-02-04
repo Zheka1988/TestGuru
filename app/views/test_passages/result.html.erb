@@ -1,4 +1,4 @@
-<h1>The <%= @test_passage.test.title %> Test was completed!</h1>
+<h1><%= t('.result_title', title: @test_passage.test.title) %></h1>
 
 <% if @test_passage.passed? %>
   <h2 class='text-success'> Тест успешно пройден! <br>

@@ -54,6 +54,10 @@ en:
         col_1: "Question"
         col_2: "Link"
         col_3: "User"
+    badges:
+      index:
+        badges: "Create new badge"
+
   helpers:
     submit:
       test:

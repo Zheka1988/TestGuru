@@ -16,7 +16,7 @@ class Admin::BadgesController < ApplicationController
     @badge = Badge.new(badge_params)
 
     if @badge.save
-      flash["alert-success"] = t('.success')
+      flash.alert = t('.success')
       redirect_to admin_badges_path
     else
       render :new
@@ -28,7 +28,7 @@ class Admin::BadgesController < ApplicationController
 
   def update
     if @badge.update(badge_params)
-      flash["alert-info"] = t('.success')
+      flash.alert = t('.success')
       redirect_to admin_badge_path(@badge)
     else
       render :edit
@@ -37,7 +37,7 @@ class Admin::BadgesController < ApplicationController
 
   def destroy
     @badge.destroy
-    flash["alert-warning"] = t('.success')
+    flash.alert = t('.success')
     redirect_to admin_badges_path
   end
 

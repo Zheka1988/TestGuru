@@ -28,8 +28,25 @@ class TestPassage < ApplicationRecord
   end
 
   def number_current_question
-      test.questions.order(:id).where('id < ?', current_question.id).count + 1
+    test.questions.order(:id).where('id < ?', current_question.id).count + 1
+   # total_questions_count - remaining_questions.count
   end
+
+  def successfully?
+    completed? && passed?
+  end
+
+  def time_left
+    (expires_at - Time.current).to_i
+  end
+
+  def time_over?
+    expires_at < Time.now
+  end
+
+  # def finish!
+  #   self.current_question = nil
+  # end
 
   private
 
@@ -51,6 +68,10 @@ class TestPassage < ApplicationRecord
 
   def remaining_questions
     test.questions.order(:id).where('id > ?', current_question.id)
+  end
+
+  def expires_at
+    created_at + test.timer.minutes
   end
 
 end

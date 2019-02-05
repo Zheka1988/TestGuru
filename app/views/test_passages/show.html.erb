@@ -1,6 +1,11 @@
 <div class="row justify-content-md-center">
   <div class="col-md-auto">
-    <h3 class="text-center text-muted text-sm"><%= t('.header', title: @test_passage.test.title) %></h1>
+    <h3 class="text-center text-muted text-sm"><%= t('.header', title: @test_passage.test.title) %></h3>
+    <p>
+      <% if @test_passage.test.timer_exists? %>
+        Time left: <%= content_tag :span, '', class: 'timer', data: { timer:  @test_passage.time_left } %>
+      <% end %>
+    </p>
     <div class = "text-sm-left text-info">
       <%= t('.number_q')%> <%= @test_passage.total_questions_count %> <br>
       <%= t('.count_q')%><%= @test_passage.number_current_question %>

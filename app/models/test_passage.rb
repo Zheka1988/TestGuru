@@ -29,7 +29,7 @@ class TestPassage < ApplicationRecord
 
   def number_current_question
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
-    total_questions_count - remaining_questions.count
+    # total_questions_count - remaining_questions.count
   end
 
   def successfully?

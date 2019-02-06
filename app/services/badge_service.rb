@@ -3,21 +3,25 @@ class BadgeService
     @test_passage = test_passage
     @user = test_passage.user
     @test = test_passage.test
+    @new_badges = []
   end
 
   def call
+
     if successful_test?
       Badge.all.each do |badge|
         send badge.rule, badge
       end
     end
+
+  end
+
+  def rewards(badge)
+    @user.badges << badge
+    @new_badges << badge
   end
 
   private
-
-  def reward(badge)
-    @user.badges << badge
-  end
 
   def successful_test?
     @test_passage.successfully?
@@ -38,7 +42,7 @@ class BadgeService
 
   def tests_exist(badge, cat_id)
     if tests_exist?(cat_id)
-      reward(badge) if all_tests_passed?(cat_id)
+      rewards(badge) if all_tests_passed?(cat_id)
     end
   end
 
@@ -60,13 +64,13 @@ class BadgeService
 
   # за прохождение теста с первой попытки
   def first_try(badge)
-    reward(badge) if @user.tests.where(id: @test.id).count == 1
+    rewards(badge) if @user.tests.where(id: @test.id).count == 1
   end
 
   # за прохождение всех тестов определенного уровня
   def level_complete(badge)
     if Test.find_by(level: badge.parametr.to_i)
-      reward(badge) if all_tests_on_level?(badge)
+      rewards(badge) if all_tests_on_level?(badge)
     end
   end
 

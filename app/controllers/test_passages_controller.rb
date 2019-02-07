@@ -22,14 +22,20 @@ class TestPassagesController < ApplicationController
   end
 
   def update
-    if @test_passage.time_left < 0
-      redirect_to result_test_passage_path(@test_passage)
+    if @test_passage.time_over?
+      complete_test
     else
       next_action
     end
   end
 
   private
+
+  def complete_test
+    @test_passage.current_question = nil
+    TestsMailer.completed_test(@test_passage).deliver_now
+    redirect_to result_test_passage_path(@test_passage)
+  end
 
   def next_action
     @test_passage.accept!(params[:answer_ids])

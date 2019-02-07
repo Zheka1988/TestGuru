@@ -26,8 +26,8 @@ class Test < ApplicationRecord
   # def one_title_one_level
   #   errors.add(:title)if self.class.where("level = ? AND title = ?", level, title).count > 1
   # end
-  def timer_exists?
-    self.timer?
-  end
+  # def timer_exists? rails сгенерировал функцию timer?
+  #   timer && timer > 0
+  # end
 
 end

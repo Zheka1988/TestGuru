@@ -2,7 +2,7 @@
   <div class="col-md-auto">
     <h3 class="text-center text-muted text-sm"><%= t('.header', title: @test_passage.test.title) %></h3>
     <p>
-      <% if @test_passage.test.timer_exists? %>
+      <% if @test_passage.test.timer? %>
         Time left: <%= content_tag :span, '', class: 'timer', data: { timer:  @test_passage.time_left } %>
       <% end %>
     </p>

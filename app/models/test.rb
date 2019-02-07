@@ -27,7 +27,7 @@ class Test < ApplicationRecord
   #   errors.add(:title)if self.class.where("level = ? AND title = ?", level, title).count > 1
   # end
   def timer_exists?
-    timer && timer > 0
+    self.timer?
   end
 
 end

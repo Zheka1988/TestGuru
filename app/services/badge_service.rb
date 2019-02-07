@@ -7,21 +7,20 @@ class BadgeService
   end
 
   def call
-
-    if successful_test?
-      Badge.all.each do |badge|
-        send badge.rule, badge
-      end
+    return [] unless @test_passage.successful_test?
+    Badge.all.each do |badge|
+      send badge.rule, badge
     end
-
   end
+
+
+
+  private
 
   def rewards(badge)
     @user.badges << badge
     @new_badges << badge
   end
-
-  private
 
   def successful_test?
     @test_passage.successfully?

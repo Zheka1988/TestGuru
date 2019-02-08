@@ -20,7 +20,7 @@ class TestPassage < ApplicationRecord
   end
 
   def passed?
-    result >= 85
+    result >= 85 ? self.update(test_result: true) : false
   end
 
   def total_questions_count

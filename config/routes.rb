@@ -16,6 +16,7 @@ Rails.application.routes.draw do
               :controllers => { sessions: 'sessions' }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   resources :feedbacks, only: %i[new create]
+  resources :badges, only: :index
 
   resources :tests, only: :index do
     resources :questions,  only: :index do
@@ -38,6 +39,8 @@ Rails.application.routes.draw do
         resources :answers, shallow: true
       end
     end
+   resources :gists, only: :index
+   resources :badges
   end
 
 end

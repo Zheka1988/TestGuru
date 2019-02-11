@@ -20,7 +20,7 @@ class TestPassage < ApplicationRecord
   end
 
   def passed?
-    result >= 85
+    result >= 85 ? self.update(success: true) : false
   end
 
   def total_questions_count
@@ -29,7 +29,14 @@ class TestPassage < ApplicationRecord
 
   def number_current_question
     test.questions.order(:id).where('id < ?', current_question.id).count + 1
-   # total_questions_count - remaining_questions.count
+  end
+
+  def successfully?
+    completed? && passed?
+  end
+
+  def finish!
+    self.current_question = nil
   end
 
   def successfully?

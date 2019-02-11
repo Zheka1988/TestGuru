@@ -42,6 +42,8 @@ class TestPassagesController < ApplicationController
   def next_action
     if @test_passage.completed?
       send_mail
+      @test_passage.user.badges << BadgeService.new(@test_passage).call
+      TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
     else
       render :show

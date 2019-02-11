@@ -4,6 +4,8 @@
     <b><%=current_user.email %> </b> &nbsp;|&nbsp;
     <b><%= link_to 'Admin Panel', admin_tests_path, class: 'text-dark' %></b> &nbsp;|&nbsp;
     <b><%= link_to 'Gists', admin_gists_index_path, class: 'text-dark' %></b> &nbsp;|&nbsp;
+    <b><%= link_to 'Badges', admin_badges_path, class: 'text-dark' %>
+    </b> &nbsp;|&nbsp;
     <b><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'text-dark' %></b>
   </div>
 </div>

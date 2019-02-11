@@ -22,9 +22,26 @@ class TestPassagesController < ApplicationController
   end
 
   def update
-    @test_passage.accept!(params[:answer_ids])
+    if @test_passage.time_over?
+      @test_passage.current_question = nil
+      next_action
+    else
+      @test_passage.accept!(params[:answer_ids])
+      next_action
+    end
+  end
 
+  private
+
+  # def complete_test
+  #   @test_passage.current_question = nil
+  #   send_mail
+  #   redirect_to result_test_passage_path(@test_passage)
+  # end
+
+  def next_action
     if @test_passage.completed?
+      send_mail
       @test_passage.user.badges << BadgeService.new(@test_passage).call
       TestsMailer.completed_test(@test_passage).deliver_now
       redirect_to result_test_passage_path(@test_passage)
@@ -33,7 +50,9 @@ class TestPassagesController < ApplicationController
     end
   end
 
-  private
+  def send_mail
+    TestsMailer.completed_test(@test_passage).deliver_now
+  end
 
   def set_test_passage
     @test_passage = TestPassage.find(params[:id])
